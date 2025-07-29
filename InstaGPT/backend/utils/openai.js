@@ -1,28 +1,37 @@
-import "dotenv/config";
+// utils/openai.js
+import OpenAI from "openai";
+import dotenv from "dotenv";
+dotenv.config();
 
-const getOpenAIAPIResponse = async(message) => {
-    const options = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-        },
-        body: JSON.stringify({
-            model: "gpt-4o-mini",
-            messages: [{
-                role: "user",
-                content: message
-            }]
-        })
-    };
+const apiKey = process.env.OPENAI_API_KEY;
 
-    try {
-        const response = await fetch("https://api.openai.com/v1/chat/completions", options);
-        const data = await response.json();
-        return data.choices[0].message.content; //reply
-    } catch(err) {
-        console.log(err);
-    }
+if (!apiKey) {
+  console.error("❌ OPENAI_API_KEY not found in .env file");
 }
+
+const openai = new OpenAI({
+  apiKey: apiKey
+});
+
+const getOpenAIAPIResponse = async (message) => {
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: message }],
+    });
+
+    const aiReply = response?.choices?.[0]?.message?.content;
+
+    if (!aiReply) {
+      console.error("⚠️ No content received from OpenAI:", JSON.stringify(response, null, 2));
+      return null;
+    }
+
+    return aiReply.trim();
+  } catch (err) {
+    console.error("❌ OpenAI API Error:", err?.response?.data || err.message || err);
+    return null;
+  }
+};
 
 export default getOpenAIAPIResponse;

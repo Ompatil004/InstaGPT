@@ -14,7 +14,8 @@
     "react-dom": "^19.1.0",
     "react-markdown": "^10.1.0",
     "react-spinners": "^0.17.0",
-    "rehype-highlight": "^7.0.2"
+    "rehype-highlight": "^7.0.2",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
