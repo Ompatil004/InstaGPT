@@ -1,7 +1,7 @@
 // routes/chat.js
 import express from "express";
 import Thread from "../models/Thread.js";
-import getOpenAIAPIResponse from "../utils/openai.js";
+import getGeminiAPIResponse from "../utils/gemini.js";
 
 const router = express.Router();
 
@@ -91,10 +91,10 @@ router.post("/chat", async (req, res) => {
       thread.updatedAt = new Date();
     }
 
-    const assistantReply = await getOpenAIAPIResponse(message);
+    const assistantReply = await getGeminiAPIResponse(message);
 
     if (!assistantReply) {
-      return res.status(500).json({ error: "OpenAI response failed" });
+      return res.status(500).json({ error: "Gemini response failed" });
     }
 
     thread.messages.push({ role: "assistant", content: assistantReply });
