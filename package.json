@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "cd InstaGPT/backend && node server.js"
+  },
   "dependencies": {
     "@google/generative-ai": "^0.24.1"
   }
