@@ -1,2 +1,37 @@
+# Environment variables
 .env
+.env.local
+.env.*.local
+
+# Node modules
+node_modules/
 node module
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# IDE and Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build and Distribution
+dist/
+build/
+*.tsbuildinfo
+
+# Dependencies lock files (optional - comment out if you want to track)
+# package-lock.json
+# yarn.lock

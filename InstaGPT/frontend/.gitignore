@@ -1,3 +1,8 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
 # Logs
 logs
 *.log
@@ -7,17 +12,31 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# IDE and Editor directories
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
+*.swp
+*.swo
+*~
+
+# OS files
+Thumbs.db
+
+# Build files
+*.tsbuildinfo
+
+# Dependencies lock files (optional - comment out if you want to track)
+# package-lock.json
+# yarn.lock
 *.ntvs*
 *.njsproj
 *.sln
