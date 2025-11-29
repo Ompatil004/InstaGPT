@@ -1,14 +1,42 @@
 * {
     color: #ececec;
-    font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-body {
+html, body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 .app {
-    background-color: #212121;
+    background: linear-gradient(135deg, #1a1a1a 0%, #212121 100%);
     display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+    .app {
+        flex-direction: column;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #505050;
 }

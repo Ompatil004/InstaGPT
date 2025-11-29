@@ -10,6 +10,8 @@ function ChatWindow() {
     const [isOpen, setIsOpen] = useState(false);
 
     const getReply = async () => {
+        if (!prompt.trim()) return;
+        
         setLoading(true);
         setNewChat(false);
 
@@ -53,7 +55,6 @@ function ChatWindow() {
         setPrompt("");
     }, [reply]);
 
-
     const handleProfileClick = () => {
         setIsOpen(!isOpen);
     }
@@ -76,22 +77,21 @@ function ChatWindow() {
             }
             <Chat></Chat>
 
-            <ScaleLoader color="#fff" loading={loading}>
-            </ScaleLoader>
+            {loading && <ScaleLoader color="#6366f1" loading={loading}></ScaleLoader>}
             
             <div className="chatInput">
                 <div className="inputBox">
-                    <input placeholder="Ask anything"
+                    <input placeholder="Ask anything..."
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
-                        onKeyDown={(e) => e.key === 'Enter'? getReply() : ''}
+                        onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey ? (getReply(), e.preventDefault()) : ''}
                     >
                            
                     </input>
                     <div id="submit" onClick={getReply}><i className="fa-solid fa-paper-plane"></i></div>
                 </div>
                 <p className="info">
-                    SigmaGPT can make mistakes. Check important info. See Cookie Preferences.
+                    SigmaGPT can make mistakes. Check important info.
                 </p>
             </div>
         </div>

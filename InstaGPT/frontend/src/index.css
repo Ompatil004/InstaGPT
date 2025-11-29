@@ -1,0 +1,66 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.4);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.6);
+}
+
+/* Selection Styling */
+::selection {
+    background-color: rgba(99, 102, 241, 0.3);
+    color: #fff;
+}
+
+::-moz-selection {
+    background-color: rgba(99, 102, 241, 0.3);
+    color: #fff;
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+    outline: 2px solid rgba(99, 102, 241, 0.5);
+    outline-offset: 2px;
+}
+
+/* Mobile Touch Optimizations */
+@media (max-width: 768px) {
+    html, body, #root {
+        overflow: auto;
+    }
+    
+    /* Larger touch targets */
+    button, [role="button"], input {
+        min-height: 44px;
+    }
+}

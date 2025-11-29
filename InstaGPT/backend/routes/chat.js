@@ -94,7 +94,11 @@ router.post("/chat", async (req, res) => {
     const assistantReply = await getGeminiAPIResponse(message);
 
     if (!assistantReply) {
-      return res.status(500).json({ error: "Gemini response failed" });
+      return res.status(500).json({ error: "Failed to get AI response" });
+    }
+
+    if (assistantReply.startsWith("Error:") || assistantReply.includes("Sorry, I encountered an error")) {
+      return res.status(500).json({ error: "Gemini response failed", reply: assistantReply });
     }
 
     thread.messages.push({ role: "assistant", content: assistantReply });
