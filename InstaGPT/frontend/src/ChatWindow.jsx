@@ -16,6 +16,9 @@ function ChatWindow() {
         setNewChat(false);
 
         console.log("message ", prompt, " threadId ", currThreadId);
+        
+        const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:8080";
+        
         const options = {
             method: "POST",
             headers: {
@@ -28,7 +31,7 @@ function ChatWindow() {
         };
 
         try {
-            const response = await fetch("/api/chat", options);
+            const response = await fetch(`${apiUrl}/api/chat`, options);
             const res = await response.json();
             console.log(res);
             setReply(res.reply);

@@ -9,7 +9,11 @@ const PORT = 8080;
 
 app.use(express.json());
 app.use(cors({
-  origin: "http://localhost:5173", // Vite's default port
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    process.env.FRONTEND_URL || "*"
+  ],
   credentials: true
 }));
 
